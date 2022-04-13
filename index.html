@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>  
+</head>
+<body>
+    
+  <ul style="list-style: none">
+    <li>
+      <ul id="list" style="display: flex;list-style: none;gap: 10px;">
+        <li><a href="#" data-value="a.mp3" style="text-decoration: none;">A</a></li>
+        <li><a href="#" data-value="b.mp3" style="text-decoration: none;">B</a></li>
+        <li><a href="#" data-value="c.mp3" style="text-decoration: none;">C</a></li> 
+      </ul>
+    </li>
+  </ul> 
+  <audio id="audio" controls="controls">
+    <source id="audioSource" src=""></source> 
+  </audio>
+
+
+
+  <script>  
+    document.getElementById('list').addEventListener('click', function(event){
+        event.preventDefault();
+        var elm = event.target;
+        
+        var audio = document.getElementById('audio');  
+        var source = document.getElementById('audioSource');
+        console.log(source)
+        source.src = elm.getAttribute('data-value');  
+        audio.load();
+        audio.currentTime  = 0;
+        audio.play(); 
+    }) 
+  </script>
+</body>
+</html>
